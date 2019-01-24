@@ -337,6 +337,10 @@ function IdPSelectUI() {
             fatal(getLocalizedMessage('fatal.badProtocol'));
             return false;
         }
+        if (!validateReturn(paramsSupplied.returnWhiteList, returnString)) {
+            fatal(getLocalizedMessage('fatal.badReturnString'));
+            return false;
+        }
 
         //
         // isPassive
@@ -442,6 +446,25 @@ function IdPSelectUI() {
         s = s.substring(0, protocolEnd);
         if (s == "http" || s== "https") {
             return true;
+        }
+        return false;
+    };
+
+    /**
+     * Validate the return String against the regexps
+     */
+
+    var validateReturn = function(regexps, testString) {
+        if (null == regexps) {
+            return false;
+        }
+
+        // use .length in case regexps isnt an array
+        for (var i = 0; i < regexps.length; i++) {
+            var regexp = new RegExp(regexps[i]);
+            if (regexp.test(testString)) {
+                return true;
+            }
         }
         return false;
     };
