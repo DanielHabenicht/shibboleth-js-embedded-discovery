@@ -456,7 +456,7 @@ function IdPSelectUI() {
 
     var validateReturn = function(regexps, testString) {
         if (null == regexps) {
-            return false;
+            return true;
         }
 
         // use .length in case regexps isnt an array
