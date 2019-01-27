@@ -78,11 +78,16 @@ function IdPSelectUI() {
     */
     this.draw = function(parms){
 
+        //
+        // try to set up the div first so that errors from setUpLocals
+        // will go to the screen.
+        //
+        idpSelectDiv = document.getElementById(parms.insertAtDiv);
+
         if (!setupLocals(parms)) {
             return;
         }
 
-        idpSelectDiv = document.getElementById(parms.insertAtDiv);
         if(!idpSelectDiv){
             fatal(getLocalizedMessage('fatal.divMissing'));
             return;
@@ -338,7 +343,8 @@ function IdPSelectUI() {
             return false;
         }
         if (!validateReturn(paramsSupplied.returnWhiteList, returnString)) {
-            fatal(getLocalizedMessage('fatal.badReturnString'));
+
+            fatalNoAlert(getLocalizedMessage('fatal.badReturnString'));
             return false;
         }
 
@@ -1586,14 +1592,21 @@ function IdPSelectUI() {
     //                  exbedding into log4js
     //
     // *************************************
-    /**
-       
-    */
+
+    var fatalNoAlert = function(message) {
+        if (idpSelectDiv) {
+            var txt = document.createTextNode(message);
+            idpSelectDiv.appendChild(txt);
+        } else {
+            alert('FATAL (NoDiv):' + message);
+        }
+    };
 
     var fatal = function(message) {
         alert('FATAL - DISCO UI:' + message);
-        var txt = document.createTextNode(message); 
-        idpSelectDiv.appendChild(txt);
+        if (idpSelectDiv) {
+            fatalNoAlert(message);
+        }
     };
 
     var debug = function() {
