@@ -38,10 +38,12 @@ function IdPSelectLanguages(){
         'fatal.noXMLHttpRequest': 'Ihr Webbrowser unterst\u00fctzt keine XMLHttpRequests, IdP-Auswahl kann nicht geladen werden',
         'fatal.wrongProtocol' : 'DS bekam eine andere Policy als "urn:oasis:names:tc:SAML:profiles:SSO:idpdiscovery-protocol:single"',
         'fatal.wrongEntityId' : 'Die entityId ist nicht korrekt',
+        'fatal.noData' : 'Heruntergeladene Metadata waren leer',
         'fatal.loadFailed': 'Metadaten konnten nicht heruntergeladen werden: ',
         'fatal.noparms' : 'Parameter f\u00fcr das Discovery Service oder \'defaultReturn\' fehlen',
         'fatal.noReturnURL' : "URL return Parmeter fehlt",
         'fatal.badProtocol' : "return Request muss mit https:// oder http:// beginnen",
+        'fatal.badReturnString' : "Return Parameter ist nicht auf Positivliste enthalten",
         'idpPreferred.label': 'Vorherige Auswahl:',
         'idpEntry.label': 'Oder geben Sie den Namen (oder Teile davon) an:',
         'idpEntry.NoPreferred.label': 'Namen (oder Teile davon) der Institution angeben:',
@@ -52,7 +54,12 @@ function IdPSelectLanguages(){
         'idpList.showSearch' : 'Institution selbst angeben',
         'submitButton.label': 'OK',
         'helpText': 'Hilfe',
-        'defaultLogoAlt' : 'Standard logo'
+        'defaultLogoAlt' : 'Standard logo',
+        'autoFollow.message' : 'Auswahl merken und diesen Dialog nicht mehr anzeigen',
+        'autoFollow.never' : 'Nicht merken',
+        'autoFollow.time0' : 'Nur f\u00fcr Heute',
+        'autoFollow.time1' : 'Drei Monate lang',
+        'autoFollow.time2' : 'Neun Monate lang'
         },
     'ja': {
         'fatal.divMissing': '"insertAtDiv" の ID を持つ <div> が HTML 中に存在しません',
