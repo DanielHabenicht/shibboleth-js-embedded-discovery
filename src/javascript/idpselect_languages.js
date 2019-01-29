@@ -85,8 +85,9 @@ function IdPSelectLanguages(){
         'autoFollow.time0' : '1日',
         'autoFollow.time1' : '3か月',
         'autoFollow.time2' : '9か月',
-        'helpText': 'Help',
-        'defaultLogoAlt' : 'DefaultLogo'
+        'fatal.badReturnString' : "戻り URL が不正です",
+        'helpText': 'ヘルプ',
+        'defaultLogoAlt' : 'ロゴ未設定'
     },
     'pt-br': {
         'fatal.divMissing': 'A tag <div> com "insertAtDiv" não foi encontrada no arquivo HTML',
