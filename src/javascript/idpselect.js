@@ -353,7 +353,7 @@ function IdPSelectUI() {
         //
         if (isPassive) {
             var prefs = retrieveUserSelectedIdPs();
-            var parentDiv = document.getElementById(parmsSupplied.insertAtDiv);
+            var parentDiv = document.getElementById(paramsSupplied.insertAtDiv);
             if (prefs.length == 0) {
                 //
                 // no preference, go back
