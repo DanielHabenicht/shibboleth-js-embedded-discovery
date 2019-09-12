@@ -5,7 +5,7 @@ INSTALL=/usr/bin/install
 JAVA=java
 TAR=tar
 ZIP=zip
-TARGET=shibboleth-embedded-ds-1.2.2
+TARGET=shibboleth-embedded-ds-1.2.3
 prefix=
 sysconfdir=${prefix}/etc
 
