@@ -1,4 +1,3 @@
- 
 /** @class IdP Selector UI */
 function IdPSelectUIParms(){
     //
@@ -7,6 +6,8 @@ function IdPSelectUIParms(){
     this.alwaysShow = true;          // If true, this will show results as soon as you start typing
     this.dataSource = '/Shibboleth.sso/DiscoFeed';   // Where to get the data from
     this.defaultLanguage = 'en';     // Language to use if the browser local doesnt have a bundle
+    this.selectedLanguage = null;    // Set this to override the browser default (for instance if you can
+                                     // detect this from the URL.
     this.defaultLogo = 'blank.gif';  // Replace with your own logo
     this.defaultLogoWidth = 1;
     this.defaultLogoHeight = 1 ;

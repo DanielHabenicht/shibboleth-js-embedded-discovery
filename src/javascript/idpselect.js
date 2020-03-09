@@ -196,7 +196,9 @@ function IdPSelectUI() {
 
         var lang;
 
-        if (typeof navigator == 'undefined') {
+        if (paramsSupplied.selectedLanguage != null) {
+            lang = paramsSupplied.selectedLanguage;
+        } else if (typeof navigator == 'undefined') {
             lang = paramsSupplied.defaultLanguage;
         } else {
             lang = navigator.language || navigator.userLanguage || paramsSupplied.defaultLanguage;
