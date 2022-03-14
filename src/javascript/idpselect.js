@@ -344,6 +344,11 @@ function IdPSelectUI() {
             fatal(getLocalizedMessage('fatal.badProtocol'));
             return false;
         }
+
+        if (!validateReturn(paramsSupplied.redirectAllow, returnString)) {
+            fatalNoAlert(getLocalizedMessage('fatal.badReturnString'));
+            return false;
+        }
         if (!validateReturn(paramsSupplied.returnWhiteList, returnString)) {
 
             fatalNoAlert(getLocalizedMessage('fatal.badReturnString'));
