@@ -56,6 +56,7 @@ function IdPSelectUI() {
     var idpListDiv;
     var idpSelect;
     var listButton;
+    var idpTextInput
     
     //
     // local configuration
@@ -918,6 +919,8 @@ function IdPSelectUI() {
         hidden.name = returnIDParam;
         hidden.value='-';
 
+        idpTextInput = textInput;
+
         var button = buildContinueButton('Select');
         button.disabled = true;
         form.appendChild(button);
@@ -947,7 +950,7 @@ function IdPSelectUI() {
             idpEntryDiv.style.display='none';
             setSelector(idpSelect, hidden.value);
             idpListDiv.style.display='';
-            listButton.focus();
+            idpSelect.focus();
             return false;
         };
         idpEntryDiv.appendChild(a);
@@ -1038,6 +1041,7 @@ function IdPSelectUI() {
         a.onclick = function() { 
             idpEntryDiv.style.display='';
             idpListDiv.style.display='none';
+            idpTextInput.focus()
             return false;
         };
         idpListDiv.appendChild(a);
