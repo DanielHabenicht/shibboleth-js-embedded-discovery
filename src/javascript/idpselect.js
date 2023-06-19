@@ -1,3 +1,7 @@
+
+import { IdPSelectLanguages } from "./idpselect_languages.js"
+import { TypeAheadControl } from "./typeahead.js"
+
 function IdPSelectUI() {
     //
     // module locals

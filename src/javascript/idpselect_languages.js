@@ -1,6 +1,6 @@
  
 /** @class IdP Selector UI */
-function IdPSelectLanguages(){
+export function IdPSelectLanguages() {
     //
     // Globalization stuff
     //

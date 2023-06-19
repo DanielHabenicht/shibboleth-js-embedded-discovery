@@ -1,4 +1,4 @@
-function TypeAheadControl(jsonObj, box, orig, submit, maxchars, getName, getEntityId, geticon, ie6hack, alwaysShow, maxResults, getKeywords)
+export function TypeAheadControl(jsonObj, box, orig, submit, maxchars, getName, getEntityId, geticon, ie6hack, alwaysShow, maxResults, getKeywords)
 {
     //
     // Squirrel away the parameters we were given
