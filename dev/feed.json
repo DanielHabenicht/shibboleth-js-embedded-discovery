@@ -1,0 +1,52 @@
+[
+  {
+    "entityID": "https://example.org/idp/shibboleth",
+    "DisplayNames": [
+      {
+        "value": "Beispiel IDP",
+        "lang": "de"
+      },
+      {
+        "value": "Example IDP",
+        "lang": "en"
+      }
+    ],
+    "Descriptions": [
+      {
+        "value": "Beispielhafter Login Service",
+        "lang": "de"
+      },
+      {
+        "value": "Example of an login service",
+        "lang": "en"
+      }
+    ],
+    "Keywords": [],
+    "Logos": [
+      {
+        "width": "236",
+        "height": "67",
+        "value": "https://example.org/favicon.ico",
+        "lang": "en"
+      },
+      {
+        "width": "16",
+        "height": "16",
+        "value": "https://example.org/favicon.ico",
+        "lang": "en"
+      }
+    ],
+    "InformationURLs": [
+      {
+        "value": "http://www.example.org",
+        "lang": "de"
+      },
+      {
+        "value": "http://www.example.org",
+        "lang": "en"
+      }
+    ],
+    "PrivacyStatementURLs": [],
+    "EntityAttributes": null
+  },
+]
