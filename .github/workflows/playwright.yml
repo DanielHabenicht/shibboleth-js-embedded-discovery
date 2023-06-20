@@ -39,7 +39,7 @@ jobs:
         run: npx playwright install
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
-      - run: playwright install-deps
+      - run: npx playwright install-deps
       - name: Run Playwright tests
         run: npm run test
       - uses: actions/upload-artifact@v3
