@@ -36,9 +36,10 @@ jobs:
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
+      - run: playwright install-deps
       - name: Run Playwright tests
         run: npm run test
       - uses: actions/upload-artifact@v3
