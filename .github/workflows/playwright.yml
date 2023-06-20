@@ -6,7 +6,7 @@ on:
     branches: [main, master]
 
 env:
-  node_version: 16
+  node_version: 18
 jobs:
   test:
     timeout-minutes: 60
