@@ -4,11 +4,11 @@ function IdPSelectUIParms() {
   // Adjust the following to fit into your local configuration
   //
   this.alwaysShow = true; // If true, this will show results as soon as you start typing
-  this.dataSource = '/Shibboleth.sso/DiscoFeed'; // Where to get the data from
-  this.defaultLanguage = 'en'; // Language to use if the browser local doesnt have a bundle
+  this.dataSource = "/feed.json"; // Where to get the data from
+  this.defaultLanguage = "de"; // Language to use if the browser local doesnt have a bundle
   this.selectedLanguage = null; // Set this to override the browser default (for instance if you can
   // detect this from the URL.
-  this.defaultLogo = 'blank.gif'; // Replace with your own logo
+  this.defaultLogo = "blank.gif"; // Replace with your own logo
   this.defaultLogoWidth = 1;
   this.defaultLogoHeight = 1;
   this.defaultReturn = null; // If non null, then the default place to send users who are not
@@ -16,14 +16,14 @@ function IdPSelectUIParms() {
   //this.defaultReturn = "https://example.org/Shibboleth.sso/DS?SAMLDS=1&target=https://example.org/secure";
   this.defaultReturnIDParam = null;
   this.redirectAllow = [
-    '^https://example.org/Shibboleth.sso/Login.*$',
-    '^https://example.com/Shibboleth.sso/Login.*$',
+    "^https://example.org/Shibboleth.sso/Login.*$",
+    "^https://example.com/Shibboleth.sso/Login.*$",
   ];
   this.helpURL =
-    'https://wiki.shibboleth.net/confluence/display/SHIB2/DSRoadmap';
+    "https://wiki.shibboleth.net/confluence/display/SHIB2/DSRoadmap";
   this.ie6Hack = null; // An array of structures to disable when drawing the pull down (needed to
   // handle the ie6 z axis problem
-  this.insertAtDiv = 'idpSelect'; // The div where we will insert the data
+  this.insertAtDiv = "idpSelect"; // The div where we will insert the data
   this.maxResults = 10; // How many results to show at once or the number at which to
   // start showing if alwaysShow is false
   this.myEntityID = null; // If non null then this string must match the string provided in the DS parms
