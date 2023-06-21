@@ -10,6 +10,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "start": "webpack serve --mode=development",
+    "start:test": "webpack serve --mode=development --env folder=test",
     "test": "npx playwright test",
     "test:github": "npx playwright test --ui --ui-host 0.0.0.0",
     "format": "prettier --write .",
