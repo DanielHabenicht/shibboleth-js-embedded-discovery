@@ -2,8 +2,8 @@
 const { test, expect } = require('@playwright/test');
 
 test.use({
-  locale: 'en-US',
-  timezoneId: 'America/New_York',
+  locale: 'de-DE',
+  timezoneId: 'Europe/Berlin',
 });
 
 test('test german text display: forced', async ({ page }) => {
@@ -12,7 +12,7 @@ test('test german text display: forced', async ({ page }) => {
     let text = await response.text();
     text = text.replace(
       'this.selectedLanguage = null',
-      'this.selectedLanguage = "de"'
+      'this.selectedLanguage = "en"'
     );
     await route.fulfill({ response, body: text });
   });
@@ -21,8 +21,6 @@ test('test german text display: forced', async ({ page }) => {
     '/?entityID=https://example.org&returnIDParam=providerUri&return=https%3a%2f%2fexample.org%2fShibboleth.sso%2fLogin%3freturnUrl%3dhttp%253a%252f%252fexample.org'
   );
 
-  // Expect a embedded discovery service to render german text
-  await expect(
-    page.getByText('Namen der Institution (oder Teile davon) angeben')
-  ).toBeVisible();
+  // Expect a embedded discovery service to render english text
+  await expect(page.getByText("Enter your organization's name")).toBeVisible();
 });

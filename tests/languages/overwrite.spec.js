@@ -6,13 +6,17 @@ test.use({
   timezoneId: 'America/New_York',
 });
 
-test('test german text display: forced', async ({ page }) => {
+test('test overwrite of language', async ({ page }) => {
   await page.route('idpselect_config.js', async (route) => {
     const response = await route.fetch();
     let text = await response.text();
     text = text.replace(
-      'this.selectedLanguage = null',
-      'this.selectedLanguage = "de"'
+      'this.langBundles = {}',
+      `this.langBundles = {
+        en: {
+            'idpEntry.NoPreferred.label': "Enter your idp's name",
+        }
+      }`
     );
     await route.fulfill({ response, body: text });
   });
@@ -21,8 +25,6 @@ test('test german text display: forced', async ({ page }) => {
     '/?entityID=https://example.org&returnIDParam=providerUri&return=https%3a%2f%2fexample.org%2fShibboleth.sso%2fLogin%3freturnUrl%3dhttp%253a%252f%252fexample.org'
   );
 
-  // Expect a embedded discovery service to render german text
-  await expect(
-    page.getByText('Namen der Institution (oder Teile davon) angeben')
-  ).toBeVisible();
+  // Expect a embedded discovery service to render english text
+  await expect(page.getByText("Enter your idp's name")).toBeVisible();
 });
