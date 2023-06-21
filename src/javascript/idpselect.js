@@ -1160,6 +1160,7 @@ function IdPSelectUI() {
     var button = document.createElement('input');
     button.setAttribute('type', 'submit');
     button.value = getLocalizedMessage('submitButton.label');
+    button.title = getLocalizedMessage('submitButton.title');
     setID(button, which + 'Button');
 
     return button;
