@@ -1274,6 +1274,7 @@ function IdPSelectUI() {
        @return (String) the message
     */
   var getLocalizedMessage = function (messageId) {
+    // This got switched in order to work?!
     var message = langBundle[messageId];
     if (!message) {
       message = defaultLangBundle[messageId];

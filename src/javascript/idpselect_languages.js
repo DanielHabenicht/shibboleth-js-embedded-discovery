@@ -58,14 +58,15 @@ export function IdPSelectLanguages() {
       'idpPreferred.label': 'Vorherige Auswahl:',
       'idpEntry.label': 'Oder geben Sie den Namen (oder Teile davon) an:',
       'idpEntry.NoPreferred.label':
-        'Namen (oder Teile davon) der Institution angeben:',
+        'Namen der Institution (oder Teile davon) angeben:',
       'idpList.label': 'Oder w\u00e4hlen Sie Ihre Institution aus einer Liste:',
       'idpList.NoPreferred.label':
         'Institution aus folgender Liste w\u00e4hlen:',
       'idpList.defaultOptionLabel': 'W\u00e4hlen Sie Ihre Institution aus...',
       'idpList.showList': 'Institution aus einer Liste w\u00e4hlen',
       'idpList.showSearch': 'Institution selbst angeben',
-      'submitButton.label': 'OK',
+      'submitButton.label': 'Anmelden',
+      'submitButton.title': 'Mit ausgewählte Organisation anmelden',
       'helpText': 'Hilfe',
       'defaultLogoAlt': 'Standard logo',
       'autoFollow.message':
