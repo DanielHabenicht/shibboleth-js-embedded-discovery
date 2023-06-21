@@ -3,39 +3,40 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env) => {
   return {
-    entry: './src/javascript/idpselect.js',
-    output: {
-      filename: 'idpselect.js',
-      path: path.resolve(__dirname, 'dist'),
-      clean: true,
-      library: 'ShibbolethEmbeddedDiscoverService',
-      globalObject: 'this',
+    entry : './src/javascript/idpselect.js',
+    output : {
+      filename : 'idpselect.js',
+      path : path.resolve(__dirname, 'dist'),
+      clean : true,
+      library : 'ShibbolethEmbeddedDiscoverService',
+      globalObject : 'this',
     },
-    devServer: {
-      historyApiFallback: true,
-      static: {
-        directory: path.join(__dirname, env.folder ?? 'dev'),
+    devServer : {
+      historyApiFallback : true,
+      static : {
+        directory : path.join(__dirname, env.folder ?? 'dev'),
       },
-      client: {
-        overlay: true,
-        reconnect: true,
+      client : {
+        overlay : true,
+        reconnect : true,
       },
-      compress: true,
-      port: 9000,
+      compress : true,
+      port : 9000,
     },
-    module: {
-      rules: [
+    module : {
+      rules : [
         {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
+          test : /\.(png|svg|jpg|jpeg|gif)$/i,
+          type : 'asset/resource',
         },
       ],
     },
-    plugins: [
+    plugins : [
       new CopyPlugin({
-        patterns: [
-          { from: 'src/resources/idpselect.css', to: 'idpselect.css' },
-          // { from: 'src/javascript/idpselect_config.js', to: 'idpselect_config.js' }
+        patterns : [
+          {from : 'src/resources/idpselect.css', to : 'idpselect.css'},
+          // { from: 'src/javascript/idpselect_config.js', to:
+          // 'idpselect_config.js' }
         ],
       }),
     ],

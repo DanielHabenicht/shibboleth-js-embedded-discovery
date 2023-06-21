@@ -1,5 +1,5 @@
-import { IdPSelectLanguages } from './idpselect_languages.js';
-import { TypeAheadControl } from './typeahead.js';
+import {IdPSelectLanguages} from './idpselect_languages.js';
+import {TypeAheadControl} from './typeahead.js';
 
 function IdPSelectUI() {
   //
@@ -7,7 +7,7 @@ function IdPSelectUI() {
   //
   var idpData;
   var base64chars =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
   var idpSelectDiv;
   var lang;
   var majorLang;
@@ -81,7 +81,7 @@ function IdPSelectUI() {
        Draws the IdP Selector UI on the screen.  This is the main
        method for the IdPSelectUI class.
     */
-  this.draw = function (parms) {
+  this.draw = function(parms) {
     //
     // try to set up the div first so that errors from setUpLocals
     // will go to the screen.
@@ -126,9 +126,9 @@ function IdPSelectUI() {
     deDupe();
     stripHidden(parms.hiddenIdPs);
 
-    idpData.sort(function (a, b) {
-      return getLocalizedName(a).localeCompare(getLocalizedName(b));
-    });
+    idpData.sort(function(
+        a,
+        b) { return getLocalizedName(a).localeCompare(getLocalizedName(b)); });
 
     var idpSelector = buildIdPSelector();
     idpSelectDiv.appendChild(idpSelector);
@@ -148,7 +148,7 @@ function IdPSelectUI() {
        IdPSelectUI object
     */
 
-  var setupLocals = function (paramsSupplied) {
+  var setupLocals = function(paramsSupplied) {
     //
     // Copy parameters in
     //
@@ -206,10 +206,8 @@ function IdPSelectUI() {
     } else if (typeof navigator == 'undefined') {
       lang = paramsSupplied.defaultLanguage;
     } else {
-      lang =
-        navigator.language ||
-        navigator.userLanguage ||
-        paramsSupplied.defaultLanguage;
+      lang = navigator.language || navigator.userLanguage ||
+             paramsSupplied.defaultLanguage;
     }
     lang = lang.toLowerCase();
 
@@ -221,34 +219,28 @@ function IdPSelectUI() {
 
     defaultLang = paramsSupplied.defaultLanguage;
 
-    if (
-      typeof paramsSupplied.langBundles != 'undefined' &&
-      typeof paramsSupplied.langBundles[lang] != 'undefined'
-    ) {
+    if (typeof paramsSupplied.langBundles != 'undefined' &&
+        typeof paramsSupplied.langBundles[lang] != 'undefined') {
       langBundle = paramsSupplied.langBundles[lang];
     } else if (typeof providedLangs.langBundles[lang] != 'undefined') {
       langBundle = providedLangs.langBundles[lang];
     } else if (typeof majorLang != 'undefined') {
-      if (
-        typeof paramsSupplied.langBundles != 'undefined' &&
-        typeof paramsSupplied.langBundles[majorLang] != 'undefined'
-      ) {
+      if (typeof paramsSupplied.langBundles != 'undefined' &&
+          typeof paramsSupplied.langBundles[majorLang] != 'undefined') {
         langBundle = paramsSupplied.langBundles[majorLang];
       } else if (typeof providedLangs.langBundles[majorLang] != 'undefined') {
         langBundle = providedLangs.langBundles[majorLang];
       }
     }
 
-    if (
-      typeof paramsSupplied.langBundles != 'undefined' &&
-      typeof paramsSupplied.langBundles[paramsSupplied.defaultLanguage] !=
-        'undefined'
-    ) {
+    if (typeof paramsSupplied.langBundles != 'undefined' &&
+        typeof paramsSupplied.langBundles[paramsSupplied.defaultLanguage] !=
+            'undefined') {
       defaultLangBundle =
-        paramsSupplied.langBundles[paramsSupplied.defaultLanguage];
+          paramsSupplied.langBundles[paramsSupplied.defaultLanguage];
     } else {
       defaultLangBundle =
-        providedLangs.langBundles[paramsSupplied.defaultLanguage];
+          providedLangs.langBundles[paramsSupplied.defaultLanguage];
     }
 
     //
@@ -273,7 +265,7 @@ function IdPSelectUI() {
     // Now set up the return values from the URL
     //
     var policy =
-      'urn:oasis:names:tc:SAML:profiles:SSO:idpdiscovery-protocol:single';
+        'urn:oasis:names:tc:SAML:profiles:SSO:idpdiscovery-protocol:single';
     var i;
     var isPassive = false;
     var parms;
@@ -284,12 +276,8 @@ function IdPSelectUI() {
     }
     var loc = win.location;
     var parmlist = loc.search;
-    if (
-      ignoreURLParams ||
-      null == parmlist ||
-      0 == parmlist.length ||
-      parmlist.charAt(0) != '?'
-    ) {
+    if (ignoreURLParams || null == parmlist || 0 == parmlist.length ||
+        parmlist.charAt(0) != '?') {
       if (null == paramsSupplied.defaultReturn && !ignoreURLParams) {
         fatal(getLocalizedMessage('fatal.noparms'));
         return false;
@@ -306,7 +294,8 @@ function IdPSelectUI() {
       parmlist = parmlist.substring(1);
 
       //
-      // protect against various hideousness by decoding. We re-encode just before we push
+      // protect against various hideousness by decoding. We re-encode just
+      // before we push
       //
 
       parms = parmlist.split('&');
@@ -356,18 +345,10 @@ function IdPSelectUI() {
       fatal(getLocalizedMessage('fatal.wrongProtocol'));
       return false;
     }
-    if (
-      paramsSupplied.myEntityID !== null &&
-      paramsSupplied.myEntityID != suppliedEntityId
-    ) {
-      fatal(
-        getLocalizedMessage('fatal.wrongEntityId') +
-          '"' +
-          suppliedEntityId +
-          '" != "' +
-          paramsSupplied.myEntityID +
-          '"'
-      );
+    if (paramsSupplied.myEntityID !== null &&
+        paramsSupplied.myEntityID != suppliedEntityId) {
+      fatal(getLocalizedMessage('fatal.wrongEntityId') + '"' +
+            suppliedEntityId + '" != "' + paramsSupplied.myEntityID + '"');
       return false;
     }
     if (null === returnString || returnString.length === 0) {
@@ -439,10 +420,10 @@ function IdPSelectUI() {
   };
 
   /** Deduplicate by entityId */
-  var deDupe = function () {
+  var deDupe = function() {
     var names = [];
     var j;
-    for (j = 0; j < idpData.length; ) {
+    for (j = 0; j < idpData.length;) {
       var eid = getEntityId(idpData[j]);
       if (null == names[eid]) {
         names[eid] = eid;
@@ -456,7 +437,7 @@ function IdPSelectUI() {
   /**
        Strips the supllied IdP list from the idpData
     */
-  var stripHidden = function (hiddenList) {
+  var stripHidden = function(hiddenList) {
     if (null == hiddenList || 0 == hiddenList.length) {
       return;
     }
@@ -478,7 +459,7 @@ function IdPSelectUI() {
    * @return whether it starts with http: or https://
    */
 
-  var validProtocol = function (s) {
+  var validProtocol = function(s) {
     if (null === s) {
       return false;
     }
@@ -498,7 +479,7 @@ function IdPSelectUI() {
    * Validate the return String against the regexps
    */
 
-  var validateReturn = function (regexps, testString) {
+  var validateReturn = function(regexps, testString) {
     if (null == regexps) {
       return true;
     }
@@ -516,7 +497,7 @@ function IdPSelectUI() {
   /**
    * We need to cache bust on IE.  So how do we know?  Use a bigger hammer.
    */
-  var isIE = function () {
+  var isIE = function() {
     if (null == navigator) {
       return false;
     }
@@ -533,7 +514,7 @@ function IdPSelectUI() {
    * Needed to cache bust Firefox
    */
 
-  var dispatchTo = function (theParent, whereTo) {
+  var dispatchTo = function(theParent, whereTo) {
     var aval = document.createElement('a');
 
     aval.href = whereTo;
@@ -543,26 +524,28 @@ function IdPSelectUI() {
   };
 
   /**
-       Loads the data used by the IdP selection UI.  Data is loaded 
+       Loads the data used by the IdP selection UI.  Data is loaded
        from a JSON document fetched from the given url.
-      
+
        @param {Function} failureCallback A function called if the JSON
        document can not be loaded from the source.  This function will
        passed the {@link XMLHttpRequest} used to request the JSON data.
     */
-  var load = function (dataSource) {
+  var load = function(dataSource) {
     var xhr = null;
 
     try {
       xhr = new XMLHttpRequest();
-    } catch (e) {}
+    } catch (e) {
+    }
     if (null == xhr) {
       //
       // EDS24. try to get 'Microsoft.XMLHTTP'
       //
       try {
         xhr = new ActiveXObject('Microsoft.XMLHTTP');
-      } catch (e) {}
+      } catch (e) {
+      }
     }
     if (null == xhr) {
       //
@@ -570,7 +553,8 @@ function IdPSelectUI() {
       //
       try {
         xhr = new ActiveXObject('MSXML2.XMLHTTP.3.0');
-      } catch (e) {}
+      } catch (e) {
+      }
     }
     if (null == xhr) {
       fatal(getLocalizedMessage('fatal.noXMLHttpRequest'));
@@ -623,7 +607,7 @@ function IdPSelectUI() {
        @return (Object) the IdP we care about
     */
 
-  var getIdPFor = function (idpName) {
+  var getIdPFor = function(idpName) {
     for (var i = 0; i < idpData.length; i++) {
       if (getEntityId(idpData[i]) == idpName) {
         return idpData[i];
@@ -634,15 +618,15 @@ function IdPSelectUI() {
 
   /**
        Returns a suitable image from the given IdP
-       
+
        @param (Object) The IdP
        @return Object) a DOM object suitable for insertion
-       
+
        TODO - rather more careful selection
     */
 
-  var getImageForIdP = function (idp, useDefault) {
-    var getBestFit = function (language) {
+  var getImageForIdP = function(idp, useDefault) {
+    var getBestFit = function(language) {
       //
       // See GetLocalizedEntry
       //
@@ -652,22 +636,16 @@ function IdPSelectUI() {
         return null;
       }
       for (i in idp.Logos) {
-        if (
-          idp.Logos[i].lang == language &&
-          idp.Logos[i].width != null &&
-          idp.Logos[i].width >= minWidth &&
-          idp.Logos[i].height != null &&
-          idp.Logos[i].height >= minHeight
-        ) {
+        if (idp.Logos[i].lang == language && idp.Logos[i].width != null &&
+            idp.Logos[i].width >= minWidth && idp.Logos[i].height != null &&
+            idp.Logos[i].height >= minHeight) {
           if (bestFit === null) {
             bestFit = idp.Logos[i];
           } else {
-            me = Math.abs(
-              bestRatio - Math.log(idp.Logos[i].width / idp.Logos[i].height)
-            );
-            him = Math.abs(
-              bestRatio - Math.log(bestFit.width / bestFit.height)
-            );
+            me = Math.abs(bestRatio -
+                          Math.log(idp.Logos[i].width / idp.Logos[i].height));
+            him =
+                Math.abs(bestRatio - Math.log(bestFit.width / bestFit.height));
             if (him > me) {
               bestFit = idp.Logos[i];
             }
@@ -738,10 +716,10 @@ function IdPSelectUI() {
 
        Three divs. PreferredIdPTime, EntryTile and DropdownTile
        Optional div AutoDispatchPane
-      
+
        @return {Element} IdP selector UI
     */
-  var buildIdPSelector = function () {
+  var buildIdPSelector = function() {
     var containerDiv = buildDiv('IdPSelector');
     var preferredTileExists;
     preferredTileExists = buildPreferredIdPTile(containerDiv);
@@ -764,11 +742,11 @@ function IdPSelectUI() {
         </div>
 
       @param (Object) The IdP
-      
+
       @return (Element) preselector for the IdP
     */
 
-  var composePreferredIdPButton = function (idp, uniq, useDefault) {
+  var composePreferredIdPButton = function(idp, uniq, useDefault) {
     var div = buildDiv(undefined, 'PreferredIdPButton');
     var aval = document.createElement('a');
     var retString = returnIDParam + '=' + encodeURIComponent(getEntityId(idp));
@@ -783,9 +761,7 @@ function IdPSelectUI() {
       retString = '&' + retString;
     }
     aval.href = retVal + retString;
-    aval.onclick = function () {
-      selectIdP(getEntityId(idp));
-    };
+    aval.onclick = function() { selectIdP(getEntityId(idp)); };
     if (null != img) {
       var imgDiv = buildDiv(undefined, 'PreferredIdPImg');
       imgDiv.appendChild(img);
@@ -808,14 +784,14 @@ function IdPSelectUI() {
   /**
    * Builds and populated a text Div
    */
-  var buildTextDiv = function (parent, textId) {
+  var buildTextDiv = function(parent, textId) {
     var div = buildDiv(undefined, 'TextDiv');
     var introTxt = document.createTextNode(getLocalizedMessage(textId));
     div.appendChild(introTxt);
     parent.appendChild(div);
   };
 
-  var setSelector = function (selector, selected) {
+  var setSelector = function(selector, selected) {
     if (null === selected || 0 === selected.length || '-' == selected.value) {
       return;
     }
@@ -837,10 +813,10 @@ function IdPSelectUI() {
           <div> [see comprosePreferredIdPButton </div>
           [repeated]
        </div>
-      
+
        @return {Element} preferred IdP selection UI
     */
-  var buildPreferredIdPTile = function (parentDiv) {
+  var buildPreferredIdPTile = function(parentDiv) {
     var preferredIdPs = getPreferredIdPs();
     if (0 === preferredIdPs.length) {
       return false;
@@ -864,11 +840,8 @@ function IdPSelectUI() {
 
     for (var i = 0; i < maxPreferredIdPs && i < preferredIdPs.length; i++) {
       if (preferredIdPs[i]) {
-        var button = composePreferredIdPButton(
-          preferredIdPs[i],
-          i,
-          atLeastOneImg
-        );
+        var button =
+            composePreferredIdPButton(preferredIdPs[i], i, atLeastOneImg);
         preferredIdPDIV.appendChild(button);
       }
     }
@@ -881,7 +854,7 @@ function IdPSelectUI() {
    * Build the <form> from the return parameters
    */
 
-  var buildSelectForm = function () {
+  var buildSelectForm = function() {
     var form = document.createElement('form');
     idpEntryDiv.appendChild(form);
 
@@ -909,11 +882,11 @@ function IdPSelectUI() {
            <input type="text", id=prefix+"IdPSelectInput/> // select text box
            <input type="hidden" /> param to send
            <input type="submit" />
-           
-      
+
+
        @return {Element} IdP entry UI tile
     */
-  var buildIdPEntryTile = function (parentDiv, preferredTile) {
+  var buildIdPEntryTile = function(parentDiv, preferredTile) {
     idpEntryDiv = buildDiv('IdPEntryTile');
     if (showListFirst) {
       idpEntryDiv.style.display = 'none';
@@ -950,15 +923,12 @@ function IdPSelectUI() {
     button.disabled = true;
     form.appendChild(button);
 
-    form.onsubmit = function () {
+    form.onsubmit = function() {
       //
       // Make sure we cannot ask for garbage
       //
-      if (
-        null === hidden.value ||
-        0 === hidden.value.length ||
-        '-' == hidden.value
-      ) {
+      if (null === hidden.value || 0 === hidden.value.length ||
+          '-' == hidden.value) {
         return false;
       }
       //
@@ -970,27 +940,16 @@ function IdPSelectUI() {
     };
 
     dropDownControl = new TypeAheadControl(
-      idpData,
-      textInput,
-      hidden,
-      button,
-      maxIdPCharsDropDown,
-      getLocalizedName,
-      getEntityId,
-      geticon,
-      ie6Hack,
-      alwaysShow,
-      maxResults,
-      getKeywords
-    );
+        idpData, textInput, hidden, button, maxIdPCharsDropDown,
+        getLocalizedName, getEntityId, geticon, ie6Hack, alwaysShow, maxResults,
+        getKeywords);
 
     var a = document.createElement('a');
     a.appendChild(
-      document.createTextNode(getLocalizedMessage('idpList.showList'))
-    );
+        document.createTextNode(getLocalizedMessage('idpList.showList')));
     a.href = '#';
     setClass(a, 'DropDownToggle');
-    a.onclick = function () {
+    a.onclick = function() {
       idpEntryDiv.style.display = 'none';
       setSelector(idpSelect, hidden.value);
       idpListDiv.style.display = '';
@@ -1016,10 +975,10 @@ function IdPSelectUI() {
           </select>
           <input type="submit"/>
        </div>
-        
+
        @return {Element} IdP drop down selection UI tile
     */
-  var buildIdPDropDownListTile = function (parentDiv, preferredTile) {
+  var buildIdPDropDownListTile = function(parentDiv, preferredTile) {
     idpListDiv = buildDiv('IdPListTile');
     if (!showListFirst) {
       idpListDiv.style.display = 'none';
@@ -1040,9 +999,7 @@ function IdPSelectUI() {
     idpListDiv.appendChild(idpSelect);
 
     var idpOption = buildSelectOption(
-      '-',
-      getLocalizedMessage('idpList.defaultOptionLabel')
-    );
+        '-', getLocalizedMessage('idpList.defaultOptionLabel'));
     idpOption.selected = true;
 
     idpSelect.appendChild(idpOption);
@@ -1058,7 +1015,7 @@ function IdPSelectUI() {
     form.appendChild(label);
     form.appendChild(idpSelect);
 
-    form.onsubmit = function () {
+    form.onsubmit = function() {
       //
       // The first entery isn't selectable
       //
@@ -1083,11 +1040,10 @@ function IdPSelectUI() {
     //
     var a = document.createElement('a');
     a.appendChild(
-      document.createTextNode(getLocalizedMessage('idpList.showSearch'))
-    );
+        document.createTextNode(getLocalizedMessage('idpList.showSearch')));
     a.href = '#';
     setClass(a, 'DropDownToggle');
-    a.onclick = function () {
+    a.onclick = function() {
       idpEntryDiv.style.display = '';
       idpListDiv.style.display = 'none';
       idpTextInput.focus();
@@ -1099,14 +1055,13 @@ function IdPSelectUI() {
     parentDiv.appendChild(idpListDiv);
   };
 
-  var buildAutoDispatchPane = function (parent) {
+  var buildAutoDispatchPane = function(parent) {
     var inputName = 'IdPSelectAutoDisp';
 
     autoDispatchTile = buildDiv(undefined, 'autoDispatchArea');
 
     autoDispatchTile.appendChild(
-      document.createTextNode(getLocalizedMessage('autoFollow.message'))
-    );
+        document.createTextNode(getLocalizedMessage('autoFollow.message')));
     //
     // The "clear" button
     //
@@ -1114,15 +1069,12 @@ function IdPSelectUI() {
     but.setAttribute('type', 'radio');
     but.setAttribute('checked', 'checked');
     but.setAttribute('name', inputName);
-    but.onclick = function () {
-      setAutoDispatchCookie(0);
-    };
+    but.onclick = function() { setAutoDispatchCookie(0); };
 
     div = buildDiv(undefined, 'autoDispatchTile');
     div.appendChild(but);
     div.appendChild(
-      document.createTextNode(getLocalizedMessage('autoFollow.never'))
-    );
+        document.createTextNode(getLocalizedMessage('autoFollow.never')));
     autoDispatchTile.appendChild(div);
 
     var i;
@@ -1135,7 +1087,7 @@ function IdPSelectUI() {
       but.setAttribute('name', inputName);
 
       but.life = autoFollowCookieTTLs[i];
-      but.onclick = function () {
+      but.onclick = function() {
         var f = this.life;
         setAutoDispatchCookie(f);
       };
@@ -1143,8 +1095,7 @@ function IdPSelectUI() {
       div = buildDiv(undefined, 'autoDispatchTile');
       div.appendChild(but);
       div.appendChild(
-        document.createTextNode(getLocalizedMessage('autoFollow.time' + i))
-      );
+          document.createTextNode(getLocalizedMessage('autoFollow.time' + i)));
       autoDispatchTile.appendChild(div);
     }
 
@@ -1153,10 +1104,10 @@ function IdPSelectUI() {
 
   /**
        Builds the 'continue' button used to submit the IdP selection.
-      
+
        @return {Element} HTML button used to submit the IdP selection
     */
-  var buildContinueButton = function (which) {
+  var buildContinueButton = function(which) {
     var button = document.createElement('input');
     button.setAttribute('type', 'submit');
     button.value = getLocalizedMessage('submitButton.label');
@@ -1170,7 +1121,7 @@ function IdPSelectUI() {
        Builds an aref to point to the helpURL
     */
 
-  var buildHelpText = function (containerDiv) {
+  var buildHelpText = function(containerDiv) {
     var aval = document.createElement('a');
     aval.href = helpURL;
     aval.appendChild(document.createTextNode(getLocalizedMessage('helpText')));
@@ -1180,12 +1131,12 @@ function IdPSelectUI() {
 
   /**
        Creates a div element whose id attribute is set to the given ID.
-      
+
        @param {String} id ID for the created div element
        @param {String} [class] class of the created div element
        @return {Element} DOM 'div' element with an 'id' attribute
     */
-  var buildDiv = function (id, whichClass) {
+  var buildDiv = function(id, whichClass) {
     var div = document.createElement('div');
     if (undefined !== id) {
       setID(div, id);
@@ -1198,11 +1149,11 @@ function IdPSelectUI() {
 
   /**
        Builds an HTML select option element
-      
+
        @param {String} value value of the option when selected
        @param {String} label displayed label of the option
     */
-  var buildSelectOption = function (value, text) {
+  var buildSelectOption = function(value, text) {
     var option = document.createElement('option');
     option.value = value;
     if (text.length > maxIdPCharsDropDown) {
@@ -1216,28 +1167,24 @@ function IdPSelectUI() {
        Sets the attribute 'id' on the provided object
        We do it through this function so we have a single
        point where we can prepend a value
-       
+
        @param (Object) The [DOM] Object we want to set the attribute on
        @param (String) The Id we want to set
     */
 
-  var setID = function (obj, name) {
-    obj.id = idPrefix + name;
-  };
+  var setID = function(obj, name) { obj.id = idPrefix + name; };
 
-  var setClass = function (obj, name) {
-    obj.setAttribute('class', classPrefix + name);
-  };
+  var setClass = function(
+      obj, name) { obj.setAttribute('class', classPrefix + name); };
 
   /**
        Returns the DOM object with the specified id.  We abstract
        through a function to allow us to prepend to the name
-       
+
        @param (String) the (unprepended) id we want
     */
-  var locateElement = function (name) {
-    return document.getElementById(idPrefix + name);
-  };
+  var locateElement = function(
+      name) { return document.getElementById(idPrefix + name); };
 
   // *************************************
   // Private functions
@@ -1253,7 +1200,7 @@ function IdPSelectUI() {
    * @param (String) The UN-encoded entityID of the IdP
    */
 
-  var selectIdP = function (idP) {
+  var selectIdP = function(idP) {
     updateSelectedIdPs(idP);
     saveUserSelectedIdPs(userSelectedIdPs);
   };
@@ -1274,7 +1221,7 @@ function IdPSelectUI() {
 
        @return (String) the message
     */
-  var getLocalizedMessage = function (messageId) {
+  var getLocalizedMessage = function(messageId) {
     var message = langBundle[messageId];
     if (!message) {
       message = defaultLangBundle[messageId];
@@ -1286,9 +1233,7 @@ function IdPSelectUI() {
     return message;
   };
 
-  var getEntityId = function (idp) {
-    return idp.entityID;
-  };
+  var getEntityId = function(idp) { return idp.entityID; };
 
   /**
        Returns the icon information for the provided idp
@@ -1298,7 +1243,7 @@ function IdPSelectUI() {
 
        @return (String) The localized name
     */
-  var geticon = function (idp) {
+  var geticon = function(idp) {
     var i;
 
     if (null == idp.Logos) {
@@ -1308,12 +1253,9 @@ function IdPSelectUI() {
       var logo = idp.Logos[i];
 
       if (logo.height == '16' && logo.width == '16') {
-        if (
-          null == logo.lang ||
-          lang == logo.lang ||
-          (typeof majorLang != 'undefined' && majorLang == logo.lang) ||
-          defaultLang == logo.lang
-        ) {
+        if (null == logo.lang || lang == logo.lang ||
+            (typeof majorLang != 'undefined' && majorLang == logo.lang) ||
+            defaultLang == logo.lang) {
           return logo.value;
         }
       }
@@ -1330,7 +1272,7 @@ function IdPSelectUI() {
 
        @return (String) The localized name
     */
-  var getLocalizedName = function (idp) {
+  var getLocalizedName = function(idp) {
     var res = getLocalizedEntry(idp.DisplayNames);
     if (null !== res) {
       return res;
@@ -1339,7 +1281,7 @@ function IdPSelectUI() {
     return getEntityId(idp);
   };
 
-  var getKeywords = function (idp) {
+  var getKeywords = function(idp) {
     if (ignoreKeywords || null == idp.Keywords) {
       return null;
     }
@@ -1348,7 +1290,7 @@ function IdPSelectUI() {
     return s;
   };
 
-  var getLocalizedEntry = function (theArray) {
+  var getLocalizedEntry = function(theArray) {
     var i;
 
     //
@@ -1403,7 +1345,7 @@ function IdPSelectUI() {
        be those past IdPs selected by a user.  The size of the array
        will be no larger than the maximum number of preferred IdPs.
     */
-  var getPreferredIdPs = function () {
+  var getPreferredIdPs = function() {
     var idps = [];
     var offset = 0;
     var i;
@@ -1423,11 +1365,8 @@ function IdPSelectUI() {
     // And then the cookie based ones
     //
     userSelectedIdPs = retrieveUserSelectedIdPs();
-    for (
-      i = offset, j = 0;
-      j < userSelectedIdPs.length && i < maxPreferredIdPs;
-      j++
-    ) {
+    for (i = offset, j = 0; j < userSelectedIdPs.length && i < maxPreferredIdPs;
+         j++) {
       var cur_idp = getIdPFor(userSelectedIdPs[j]);
       if (typeof idps.indexOf === 'undefined') {
         idps.push(cur_idp);
@@ -1445,7 +1384,7 @@ function IdPSelectUI() {
 
        @param (String) the newly selected IdP
     */
-  var updateSelectedIdPs = function (newIdP) {
+  var updateSelectedIdPs = function(newIdP) {
     //
     // We cannot use split since it does not appear to
     // work as per spec on ie8.
@@ -1479,7 +1418,7 @@ function IdPSelectUI() {
 
      */
 
-  var setAutoDispatchCookie = function (days) {
+  var setAutoDispatchCookie = function(days) {
     var expireDate;
     if (days > 0) {
       var now = new Date();
@@ -1489,7 +1428,7 @@ function IdPSelectUI() {
       expireDate = new Date(0);
     }
     document.cookie =
-      autoFollowCookie + '=1;path=/;expires=' + expireDate.toUTCString();
+        autoFollowCookie + '=1;path=/;expires=' + expireDate.toUTCString();
   };
 
   /**
@@ -1499,7 +1438,7 @@ function IdPSelectUI() {
        @return the value or null if no cookie of that name
     */
 
-  var getCookieCalled = function (name) {
+  var getCookieCalled = function(name) {
     var i, j;
     var cookies;
 
@@ -1524,7 +1463,7 @@ function IdPSelectUI() {
 
       @return {Array} user selected IdPs identified by their entity ID
     */
-  var retrieveUserSelectedIdPs = function () {
+  var retrieveUserSelectedIdPs = function() {
     var userSelectedIdPs = [];
     var j;
 
@@ -1550,10 +1489,10 @@ function IdPSelectUI() {
 
   /**
        Saves the IdPs selected by the user.
-      
+
        @param {Array} idps idps selected by the user
     */
-  var saveUserSelectedIdPs = function (idps) {
+  var saveUserSelectedIdPs = function(idps) {
     var cookieData = [];
     var length = idps.length;
 
@@ -1578,31 +1517,22 @@ function IdPSelectUI() {
     }
 
     document.cookie =
-      '_saml_idp' +
-      '=' +
-      cookieData.join('%20') +
-      '; path = /' +
-      (expireDate === null ? '' : '; expires=' + expireDate.toUTCString());
+        '_saml_idp' +
+        '=' + cookieData.join('%20') + '; path = /' +
+        (expireDate === null ? '' : '; expires=' + expireDate.toUTCString());
   };
 
   /**
        Base64 encodes the given string.
-      
+
        @param {String} input string to be encoded
-      
+
        @return {String} base64 encoded string
     */
-  var base64Encode = function (input) {
-    var output = '',
-      c1,
-      c2,
-      c3,
-      e1,
-      e2,
-      e3,
-      e4;
+  var base64Encode = function(input) {
+    var output = '', c1, c2, c3, e1, e2, e3, e4;
 
-    for (var i = 0; i < input.length; ) {
+    for (var i = 0; i < input.length;) {
       c1 = input.charCodeAt(i++);
       c2 = input.charCodeAt(i++);
       c3 = input.charCodeAt(i++);
@@ -1615,11 +1545,8 @@ function IdPSelectUI() {
       } else if (isNaN(c3)) {
         e4 = 64;
       }
-      output +=
-        base64chars.charAt(e1) +
-        base64chars.charAt(e2) +
-        base64chars.charAt(e3) +
-        base64chars.charAt(e4);
+      output += base64chars.charAt(e1) + base64chars.charAt(e2) +
+                base64chars.charAt(e3) + base64chars.charAt(e4);
     }
 
     return output;
@@ -1627,20 +1554,13 @@ function IdPSelectUI() {
 
   /**
        Base64 decodes the given string.
-      
+
        @param {String} input string to be decoded
-      
+
        @return {String} base64 decoded string
     */
-  var base64Decode = function (input) {
-    var output = '',
-      chr1,
-      chr2,
-      chr3,
-      enc1,
-      enc2,
-      enc3,
-      enc4;
+  var base64Decode = function(input) {
+    var output = '', chr1, chr2, chr3, enc1, enc2, enc3, enc4;
     var i = 0;
 
     // Remove all characters that are not A-Z, a-z, 0-9, +, /, or =
@@ -1681,7 +1601,7 @@ function IdPSelectUI() {
   //
   // *************************************
 
-  var fatalNoAlert = function (message) {
+  var fatalNoAlert = function(message) {
     if (idpSelectDiv) {
       var txt = document.createTextNode(message);
       idpSelectDiv.appendChild(txt);
@@ -1690,14 +1610,14 @@ function IdPSelectUI() {
     }
   };
 
-  var fatal = function (message) {
+  var fatal = function(message) {
     alert('FATAL - DISCO UI:' + message);
     if (idpSelectDiv) {
       fatalNoAlert(message);
     }
   };
 
-  var debug = function () {
+  var debug = function() {
     //
     // Nothing
   };
