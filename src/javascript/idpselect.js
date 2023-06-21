@@ -306,7 +306,8 @@ function IdPSelectUI() {
       parmlist = parmlist.substring(1);
 
       //
-      // protect against various hideousness by decoding. We re-encode just before we push
+      // protect against various hideousness by decoding. We re-encode just
+      // before we push
       //
 
       parms = parmlist.split('&');
@@ -543,9 +544,9 @@ function IdPSelectUI() {
   };
 
   /**
-       Loads the data used by the IdP selection UI.  Data is loaded 
+       Loads the data used by the IdP selection UI.  Data is loaded
        from a JSON document fetched from the given url.
-      
+
        @param {Function} failureCallback A function called if the JSON
        document can not be loaded from the source.  This function will
        passed the {@link XMLHttpRequest} used to request the JSON data.
@@ -634,10 +635,10 @@ function IdPSelectUI() {
 
   /**
        Returns a suitable image from the given IdP
-       
+
        @param (Object) The IdP
        @return Object) a DOM object suitable for insertion
-       
+
        TODO - rather more careful selection
     */
 
@@ -738,7 +739,7 @@ function IdPSelectUI() {
 
        Three divs. PreferredIdPTime, EntryTile and DropdownTile
        Optional div AutoDispatchPane
-      
+
        @return {Element} IdP selector UI
     */
   var buildIdPSelector = function () {
@@ -764,7 +765,7 @@ function IdPSelectUI() {
         </div>
 
       @param (Object) The IdP
-      
+
       @return (Element) preselector for the IdP
     */
 
@@ -837,7 +838,7 @@ function IdPSelectUI() {
           <div> [see comprosePreferredIdPButton </div>
           [repeated]
        </div>
-      
+
        @return {Element} preferred IdP selection UI
     */
   var buildPreferredIdPTile = function (parentDiv) {
@@ -909,8 +910,8 @@ function IdPSelectUI() {
            <input type="text", id=prefix+"IdPSelectInput/> // select text box
            <input type="hidden" /> param to send
            <input type="submit" />
-           
-      
+
+
        @return {Element} IdP entry UI tile
     */
   var buildIdPEntryTile = function (parentDiv, preferredTile) {
@@ -1016,7 +1017,7 @@ function IdPSelectUI() {
           </select>
           <input type="submit"/>
        </div>
-        
+
        @return {Element} IdP drop down selection UI tile
     */
   var buildIdPDropDownListTile = function (parentDiv, preferredTile) {
@@ -1153,7 +1154,7 @@ function IdPSelectUI() {
 
   /**
        Builds the 'continue' button used to submit the IdP selection.
-      
+
        @return {Element} HTML button used to submit the IdP selection
     */
   var buildContinueButton = function (which) {
@@ -1180,7 +1181,7 @@ function IdPSelectUI() {
 
   /**
        Creates a div element whose id attribute is set to the given ID.
-      
+
        @param {String} id ID for the created div element
        @param {String} [class] class of the created div element
        @return {Element} DOM 'div' element with an 'id' attribute
@@ -1198,7 +1199,7 @@ function IdPSelectUI() {
 
   /**
        Builds an HTML select option element
-      
+
        @param {String} value value of the option when selected
        @param {String} label displayed label of the option
     */
@@ -1216,7 +1217,7 @@ function IdPSelectUI() {
        Sets the attribute 'id' on the provided object
        We do it through this function so we have a single
        point where we can prepend a value
-       
+
        @param (Object) The [DOM] Object we want to set the attribute on
        @param (String) The Id we want to set
     */
@@ -1232,7 +1233,7 @@ function IdPSelectUI() {
   /**
        Returns the DOM object with the specified id.  We abstract
        through a function to allow us to prepend to the name
-       
+
        @param (String) the (unprepended) id we want
     */
   var locateElement = function (name) {
@@ -1550,7 +1551,7 @@ function IdPSelectUI() {
 
   /**
        Saves the IdPs selected by the user.
-      
+
        @param {Array} idps idps selected by the user
     */
   var saveUserSelectedIdPs = function (idps) {
@@ -1587,9 +1588,9 @@ function IdPSelectUI() {
 
   /**
        Base64 encodes the given string.
-      
+
        @param {String} input string to be encoded
-      
+
        @return {String} base64 encoded string
     */
   var base64Encode = function (input) {
@@ -1627,9 +1628,9 @@ function IdPSelectUI() {
 
   /**
        Base64 decodes the given string.
-      
+
        @param {String} input string to be decoded
-      
+
        @return {String} base64 decoded string
     */
   var base64Decode = function (input) {

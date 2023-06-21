@@ -35,7 +35,8 @@ module.exports = (env) => {
       new CopyPlugin({
         patterns: [
           { from: 'src/resources/idpselect.css', to: 'idpselect.css' },
-          // { from: 'src/javascript/idpselect_config.js', to: 'idpselect_config.js' }
+          // { from: 'src/javascript/idpselect_config.js', to:
+          // 'idpselect_config.js' }
         ],
       }),
     ],
