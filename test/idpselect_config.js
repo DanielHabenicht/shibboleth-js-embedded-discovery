@@ -14,7 +14,7 @@ function IdPSelectUIParms() {
     '^https://example.com/Shibboleth.sso/Login.*$',
   ];
   this.helpURL =
-    'https://wiki.shibboleth.net/confluence/display/SHIB2/DSRoadmap';
+      'https://wiki.shibboleth.net/confluence/display/SHIB2/DSRoadmap';
   this.ie6Hack = null;
   this.insertAtDiv = 'idpSelect';
   this.maxResults = 10;
@@ -28,7 +28,7 @@ function IdPSelectUIParms() {
   this.testGUI = false;
 
   this.autoFollowCookie = null;
-  this.autoFollowCookieTTLs = [1, 60, 270];
+  this.autoFollowCookieTTLs = [ 1, 60, 270 ];
 
   this.langBundles = {};
 
